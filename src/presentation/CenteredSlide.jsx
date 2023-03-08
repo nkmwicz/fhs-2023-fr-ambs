@@ -18,7 +18,7 @@ function CenteredSlide({
   title,
   subTitle,
   images,
-  textArray,
+  text,
   contentBoxClass,
   contentTextClass,
   imageArrayBoxClass,
@@ -51,7 +51,7 @@ function CenteredSlide({
           </div>
         ) : (
           <div className={`${contentTextClass} content-text`}>
-            {textArray.map((a) => (
+            {text.map((a) => (
               <div key={uuidv4()} className="text">
                 <div className="text-item" key={uuidv4()}>
                   <p key={uuidv4()} style={{ color: a.color }}>
@@ -81,7 +81,7 @@ CenteredSlide.propTypes = {
   title: PropTypes.string,
   subTitle: PropTypes.string,
   images: PropTypes.array,
-  textArray: PropTypes.arrayOf(
+  text: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
       color: PropTypes.string,

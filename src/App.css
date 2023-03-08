@@ -11,3 +11,165 @@
   justify-content: center;
   align-items: center;
 }
+
+.label {
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  top: 25px;
+  left: 0;
+}
+
+.label h1 {
+  text-align: center;
+  text-align: center;
+  background-color: white;
+  border: solid black 1px;
+  border-radius: 10pt;
+  padding: 25px;
+}
+
+.values-text {
+  border-radius: 10pt;
+  padding: 2px 5px;
+  font-size: 1.4em;
+}
+
+.MuiSlider-root.slider{
+  height: 15px !important;
+}
+
+.sliderBox {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  bottom: 5px;
+  left: 0;
+  width: 50vw;
+  height: 45px;
+  z-index: 10;
+  transform: translate(50%, 0);
+  background-color: white;
+  border-radius: 10pt;
+  /* margin: 15px; */
+  padding: 0 10px;
+  z-index: 1;
+  border: solid black 1px
+}
+
+.slider-wrapper {
+  width: 80%
+}
+
+.MuiSlider-rail {
+    display: block;
+    position: absolute;
+    width: 75%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: currentColor;
+    opacity: 0.4;
+}
+
+.MuiSlider-track {
+    display: block;
+    position: absolute;
+    height: 4px;
+    border-radius: 2px;
+    background-color: currentColor;
+}
+
+.MuiSlider-thumb {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin-left: -6px;
+    margin-top: -6px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    outline: 0;
+    border: 3px solid currentColor;
+    background-color: #fff;
+}
+
+.key {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 200px;
+  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  z-index: 1;
+  background-color: white;
+  border-radius: 10pt;
+  border: solid black 1px;
+}
+
+.key-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black 1px;
+}
+
+.key-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.key-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+  width: 75px;
+}
+
+.slideNumber {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+}
+
+.mytable {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  max-height: 65vh;
+  max-width: 250px;
+  border: solid black 1px;
+  border-radius: 10pt;
+  background-color: white;
+  overflow: auto;
+}
+
+.mytable h2 {
+  text-align: center;
+}
+
+.table-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 3pt;
+  /* background-color: lightgrey; */
+}
+
+.table-close:hover {
+  background-color: lightgrey;
+}
+.table-close:active {
+  background-color: grey;
+}

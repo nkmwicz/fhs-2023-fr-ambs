@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { dates, mapStates } from "../../components/globalState";
+import { dates } from "../../components/globalState";
 
 export function Label() {
   const date = useRecoilValue(dates);

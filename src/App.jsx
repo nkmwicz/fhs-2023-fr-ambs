@@ -7,6 +7,7 @@ import {
   cacheImages,
   LoadingSpinner,
   QuickLayout,
+  SplitSlideChild,
 } from "./presentation";
 import {
   slidesArray,
@@ -16,6 +17,7 @@ import {
   europeFiltered,
   dates,
   ambassadors,
+  filteredAmbassadors,
 } from "./components/globalState";
 import { Map } from "./map/map";
 import { RangeSlider } from "./map/components/slider";
@@ -23,6 +25,7 @@ import { Label } from "./map/components/Label";
 import { Key } from "./map/components/Key";
 import { SlideNumber } from "./components/SlideNumber";
 import { Table } from "./components/Table";
+import { BasicBarChart } from "./components/BasicBarChart";
 
 function App() {
   const [slideState, setSlideState] = useRecoilState(slidesArray);
@@ -31,6 +34,7 @@ function App() {
   const [ambs, setAmbs] = useRecoilState(ambassadors);
   const slide = useRecoilValue(currentSlide);
   const filtered = useRecoilValue(europeFiltered);
+  const filteredAmbs = useRecoilValue(filteredAmbassadors);
 
   useEffect(() => {
     // console.log("allCountries", allCountries.length);
@@ -95,7 +99,14 @@ function App() {
   return (
     <div className="App">
       <Arrows handleNextClick={nextSlide} handlePrevClick={prevSlide} />
-      {slide && slide.slide ? <QuickLayout slide={slide} /> : null}
+      {slide && slide.slide && !slide.child ? (
+        <QuickLayout slide={slide} />
+      ) : null}
+      {/* {slide && slide.slide && slide.child ? (
+        <SplitSlideChild slide={slide}>
+          <BasicBarChart data={filteredAmbs} />
+        </SplitSlideChild>
+      ) : null} */}
       <M_Map />
       <Label />
       <RangeSlider />

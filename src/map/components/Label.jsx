@@ -3,7 +3,6 @@ import { useRecoilValue } from "recoil";
 import { dates, mapStates } from "../../components/globalState";
 
 export function Label() {
-  const states = useRecoilValue(mapStates);
   const date = useRecoilValue(dates);
   if (date[0] === date[1]) {
     return (

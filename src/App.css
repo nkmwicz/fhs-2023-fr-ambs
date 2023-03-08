@@ -145,7 +145,7 @@
   top: 25px;
   right: 10px;
   max-height: 65vh;
-  max-width: 250px;
+  max-width: 20vw;
   border: solid black 1px;
   border-radius: 10pt;
   background-color: white;
@@ -154,6 +154,37 @@
 
 .mytable h2 {
   text-align: center;
+}
+
+/* set background of even li in .mytable ul to lightgrey */
+.mytable tbody tr:nth-child(even) {
+  background-color: lightgrey;
+  width: 100%;
+}
+
+.mytable tbody {
+  min-width: 350px;
+}
+
+.mytable tbody tr {
+  width: 100%;
+}
+
+.mytable tbody tr td{
+  padding: 0 10px; 
+}
+
+.mybody tbody tr:last-child {
+  text-align: center;
+}
+ /* remove dots from li */
+.mytable ul li {
+  list-style-type: none;  
+}
+
+.mytable ul{
+  padding: 5px;
+  margin: 0;
 }
 
 .table-close {

@@ -47,8 +47,6 @@ export function Table() {
     }
   }
 
-  console.log(isTable);
-
   return (
     <>
       {isTable ? (
@@ -57,21 +55,34 @@ export function Table() {
             X
           </button>
           <h2>{place}</h2>
-          <ul>
-            {groupedAmbs &&
-              groupedAmbs.map((d, i) => {
-                // console.log(d);
-                if (d) {
-                  const years = d.info.map((d) => d.properties.year);
-                  return (
-                    <li key={`li_${i}`}>
-                      {d.name} {`(${min(years)} - ${max(years)})`}
-                    </li>
-                  );
-                }
-                return null;
-              })}
-          </ul>
+          <hr />
+          <table>
+            <tbody>
+              {groupedAmbs &&
+                groupedAmbs.map((d, i) => {
+                  // console.log(d);
+                  if (d) {
+                    const years = d.info.map((d) => d.properties.year);
+                    return (
+                      <tr key={`min/max-li_${i}`}>
+                        {min(years) !== max(years) ? (
+                          <>
+                            <td>{d.name}</td>
+                            <td> {`(${min(years)} - ${max(years)})`}</td>
+                          </>
+                        ) : (
+                          <>
+                            <td>{d.name}</td>
+                            <td> {`(${min(years)})`}</td>
+                          </>
+                        )}
+                      </tr>
+                    );
+                  }
+                  return null;
+                })}
+            </tbody>
+          </table>
         </div>
       ) : null}
     </>

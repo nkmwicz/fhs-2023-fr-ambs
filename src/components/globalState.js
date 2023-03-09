@@ -5,6 +5,8 @@ import { groups } from "d3-array";
 
 const europeFeatures = europe.features;
 
+// what is the lat and long
+
 export const View = atom({
   key: "view",
   default: {

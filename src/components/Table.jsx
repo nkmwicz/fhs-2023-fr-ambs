@@ -51,11 +51,16 @@ export function Table() {
     <>
       {isTable ? (
         <div className="mytable">
-          <button className="table-close" onClick={handleClick}>
-            X
-          </button>
-          <h2>{place}</h2>
-          <hr />
+          <div className="table-header">
+            <div className="table-h2-wrapper">
+              <h2>{place}</h2>
+            </div>
+            <div className="table-close-wrapper">
+              <button className="table-close" onClick={handleClick}>
+                X
+              </button>
+            </div>
+          </div>
           <table>
             <tbody>
               {groupedAmbs &&

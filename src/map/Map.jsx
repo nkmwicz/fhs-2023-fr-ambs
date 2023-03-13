@@ -1,13 +1,15 @@
 import DeckGL from "@deck.gl/react";
 import { GeoJsonLayer, TextLayer } from "@deck.gl/layers";
 import React from "react";
-import { MapView } from "@deck.gl/core";
+import { MapView, WebMercatorViewport } from "@deck.gl/core";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   europeFiltered,
   filteredAmbassadors,
   mapPlace,
   tableExists,
+  tableXLoc,
+  tableYLoc,
   View,
 } from "../components/globalState";
 import { getHeight } from "./components/getHeight";
@@ -15,6 +17,7 @@ import { getHeight2 } from "./components/getHeight2";
 import { getAmbsColor } from "./components/getAmbsColor";
 import { deviation, mean } from "d3-array";
 import oceans from "../mymaps/oceans.json";
+import { styleCircles } from "./components/mapStyling";
 
 export function Map() {
   const [viewState, setViewState] = useRecoilState(View);
@@ -22,6 +25,11 @@ export function Map() {
   const ambs = useRecoilValue(filteredAmbassadors);
   const [isTable, setIsTable] = useRecoilState(tableExists);
   const [place, setPlace] = useRecoilState(mapPlace);
+  const [tableX, setTableX] = useRecoilState(tableXLoc);
+  const [tableY, setTableY] = useRecoilState(tableYLoc);
+  const viewport = new WebMercatorViewport({
+    ...viewState,
+  });
 
   function getTooltip({ object }) {
     if (object && object.properties.name) {
@@ -113,16 +121,26 @@ export function Map() {
     onClick: ({ object }) => {
       if (!isTable) {
         setIsTable(true);
-        console.log(object.properties.name);
         setPlace(object.properties.name);
       } else {
         setPlace(object.properties.name);
-        console.log(object.properties.name);
       }
     },
   });
 
   const memoEurope = React.useMemo(() => europeLayer, [features, ambs]);
+
+  const handleMapChange = (e) => {
+    setViewState(e.viewState);
+    if (place) {
+      setTableX(
+        viewport.project([styleCircles(place).long, styleCircles(place).lat])[0]
+      );
+      setTableY(
+        viewport.project([styleCircles(place).long, styleCircles(place).lat])[1]
+      );
+    }
+  };
 
   const oceansLayer = new GeoJsonLayer({
     id: "oceans",
@@ -143,7 +161,7 @@ export function Map() {
       layers={[memoBorders, memoEurope, memoText, oceansLayer]}
       getTooltip={getTooltip}
       pickable={true}
-      onViewStateChange={(e) => setViewState(e.viewState)}
+      onViewStateChange={handleMapChange}
     />
   );
 }

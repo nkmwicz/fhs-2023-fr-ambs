@@ -115,3 +115,13 @@ export const mapStates = atom({
   key: "mapStates",
   default: [],
 });
+
+export const tableYLoc = atom({
+  key: "tableYLoc",
+  default: 0,
+});
+
+export const tableXLoc = atom({
+  key: "tableXLoc",
+  default: 0,
+});

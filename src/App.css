@@ -140,16 +140,43 @@
   z-index: 5;
 }
 
-.mytable {
+.mytable-wrapper {
   position: absolute;
-  top: 25px;
-  right: 10px;
-  max-height: 65vh;
+  transform: translate(-50%, -50px);
   max-width: 20vw;
   border: solid black 1px;
   border-radius: 10pt;
   background-color: white;
-  overflow: auto;
+  overflow: none;
+}
+
+.mytable{
+  max-height: 450px;
+  overflow: hidden;
+}
+
+
+/* create triangle :after mytable */
+.mytable-wrapper::after{
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.mytable-wrapper::before{
+  content: "";
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 
 .table-header {
@@ -182,6 +209,7 @@
 
 .mytable tbody {
   min-width: 350px;
+  border-radius: 10pt;
 }
 
 .mytable tbody tr {

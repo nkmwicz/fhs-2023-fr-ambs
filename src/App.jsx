@@ -41,7 +41,8 @@ function App() {
     // console.log(groups(filtered, (feature) => feature.properties.name));
   }, [filtered]);
 
-  const M_Map = useMemo(() => Map, [ambs]);
+  // const M_Map = useMemo(() => Map, [ambs]);
+  const M_Table = useMemo(() => Table, [filtered]);
 
   useEffect(() => {
     if (slide && slide.start && slide.end) {
@@ -102,17 +103,23 @@ function App() {
       {slide && slide.slide && !slide.child ? (
         <QuickLayout slide={slide} />
       ) : null}
-      {/* {slide && slide.slide && slide.child ? (
-        <SplitSlideChild slide={slide}>
-          <BasicBarChart data={filteredAmbs} />
-        </SplitSlideChild>
-      ) : null} */}
-      <M_Map />
+      {slide && slide.slide && slide.child ? (
+        <div className="main">
+          <SplitSlideChild
+            title={slide.title}
+            subTitle={slide.subTitle}
+            textArray={slide.text}
+          >
+            <BasicBarChart groupedData={filteredAmbs} />
+          </SplitSlideChild>
+        </div>
+      ) : null}
+      <Map />
       <Label />
       <RangeSlider />
       <Key />
       <SlideNumber slideNumber={slide.number} />
-      <Table />
+      <M_Table />
     </div>
   );
 }

@@ -20,9 +20,10 @@ export function Table() {
   const years = useRecoilValue(dates);
   const ambGroups = useRecoilValue(filteredAmbassadors);
   const [groupedAmbs, setGroupedAmbs] = useState([]);
+  const [placesAmbs, setPlacesAmbs] = useState();
   const [mapView, setMapView] = useRecoilState(View);
-  const [tableX, setTableX] = useRecoilState(tableXLoc);
-  const [tableY, setTableY] = useRecoilState(tableYLoc);
+  const tableX = useRecoilValue(tableXLoc);
+  const tableY = useRecoilValue(tableYLoc);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
   //set tableX and TableY to center of screen on window resize
@@ -36,8 +37,9 @@ export function Table() {
   }, []);
 
   useEffect(() => {
-    if (place) {
+    if (place && styleCircles(place).long) {
       const placeAmbs = ambGroups.find((d) => d.name === place);
+      setPlacesAmbs(placeAmbs);
       const theAmbs = placeAmbs?.info
         ? Array.from(
             groups(placeAmbs.info, (d) => d.properties.name),
@@ -93,7 +95,10 @@ export function Table() {
           <div className="mytable">
             <div className="table-header">
               <div className="table-h2-wrapper">
-                <h2>{place}</h2>
+                <h2>
+                  {place}:{" "}
+                  {placesAmbs?.info.length ? placesAmbs.info.length : 0}
+                </h2>
               </div>
               <div className="table-close-wrapper">
                 <button className="table-close" onClick={handleClick}>

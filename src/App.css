@@ -142,19 +142,17 @@
 
 .mytable-wrapper {
   position: absolute;
-  transform: translate(-50%, -50px);
-  max-width: 20vw;
+  transform: translate(-50%, -35px);
   border: solid black 1px;
   border-radius: 10pt;
   background-color: white;
-  overflow: none;
 }
 
 .mytable{
-  max-height: 450px;
-  overflow: hidden;
+  max-height: 250px;
+  max-width: 300px;
+  overflow-y: auto;
 }
-
 
 /* create triangle :after mytable */
 .mytable-wrapper::after{
@@ -198,7 +196,7 @@
 }
 
 .mytable h2 {
-  text-align: center;
+  text-align: center; 
 }
 
 /* set background of even li in .mytable ul to lightgrey */
@@ -248,4 +246,77 @@
 }
 .table-close:active {
   background-color: grey;
+}
+
+/* .d3-div {
+  border: solid black;
+} */
+
+.std {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.svg-wrapper {
+  position: relative;
+}
+
+.d3-div {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* border: solid black; */
+}
+
+.d3-div-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  /* border: solid black; */
+}
+
+g {
+  z-index: 999;
+}
+
+.bar-chart-y-line {
+  stroke: black;
+  stroke-width: .5
+}
+
+.bar-chart-y-text {
+  text-anchor: middle;
+  font-size: .9em;
+}
+
+.bar-chart-y-stats {
+  font-size: 0.7em;
+}
+
+.bar-chart-x-text {
+  text-anchor: middle;
+  transform: rotate(-90deg);
+  font-size: .8em;
+
+}
+
+.popover-body {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.x-line-text {
+  text-anchor: middle;
+  transform: rotate(-90deg);
+}
+
+.line-table-vert-lines {
+  stroke: black;
+  opacity: .25;
+  stroke-width: 1;
 }

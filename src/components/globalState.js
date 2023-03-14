@@ -25,7 +25,7 @@ export const europeMap = atom({
 
 export const dates = atom({
   key: "dates",
-  default: [1500, 1600],
+  default: [1516, 1516],
 });
 
 export const sliderValue = atom({

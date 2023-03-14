@@ -156,7 +156,7 @@ export function Map() {
   return (
     <DeckGL
       views={new MapView()}
-      controller={true}
+      controller={{ keyboard: false }}
       viewState={viewState}
       layers={[memoBorders, memoEurope, memoText, oceansLayer]}
       getTooltip={getTooltip}

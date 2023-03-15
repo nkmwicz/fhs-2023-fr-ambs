@@ -4,6 +4,7 @@ import React from "react";
 import { MapView, WebMercatorViewport } from "@deck.gl/core";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
+  dates,
   europeFiltered,
   filteredAmbassadors,
   mapPlace,
@@ -27,6 +28,7 @@ export function Map() {
   const [place, setPlace] = useRecoilState(mapPlace);
   const [tableX, setTableX] = useRecoilState(tableXLoc);
   const [tableY, setTableY] = useRecoilState(tableYLoc);
+  const years = useRecoilValue(dates);
   const viewport = new WebMercatorViewport({
     ...viewState,
   });
@@ -109,7 +111,7 @@ export function Map() {
     color: [0, 0, 0],
     extruded: true,
     autoHighlight: true,
-    getElevation: (d) => getHeight(d, ambs),
+    getElevation: (d) => getHeight(d, ambs, years),
     // getElevation: (d) => getHeight2(d, ambs),
     lineWidthMinPixels: 2,
     getFillColor: (d) => getAmbsColor(d, ambs),

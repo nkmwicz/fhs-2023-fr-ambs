@@ -53,8 +53,8 @@ export function Map() {
     const dev5 = [avg + std + std + std, avg + std + std + std + std];
     if (ambs1 && ambs1 >= dev0[0] && ambs1 < dev0[1]) return 200;
     if (ambs1 && ambs1 >= dev1[0] && ambs1 < dev1[1]) return 50000;
-    if (ambs1 && ambs1 >= dev2[0] && ambs1 < dev2[1]) return 120000;
-    if (ambs1 && ambs1 >= dev3[0] && ambs1 < dev3[1]) return 200000;
+    if (ambs1 && ambs1 >= dev2[0] && ambs1 < dev2[1]) return 150000;
+    if (ambs1 && ambs1 >= dev3[0] && ambs1 < dev3[1]) return 300000;
     if (ambs1 && ambs1 >= dev4[0] && ambs1 < dev4[1]) return 400000;
     if (ambs1 && ambs1 >= dev5[0] && ambs1 < dev5[1]) return 600000;
     return 20;

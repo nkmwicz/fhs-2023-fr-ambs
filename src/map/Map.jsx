@@ -43,8 +43,9 @@ export function Map() {
     }
   }
   function getZ(d) {
-    const listValues = ambs.map((d) => d?.info?.length);
-    const ambs1 = d.info.length;
+    const yearSpan = years[1] - years[0] + 1;
+    const listValues = ambs.map((d) => d?.info?.length / yearSpan);
+    const ambs1 = d.info.length / yearSpan;
     const std = deviation(listValues);
     const avg = mean(listValues);
     const dev0 = [avg - std - std, avg - std];
